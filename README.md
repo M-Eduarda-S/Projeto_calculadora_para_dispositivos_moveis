@@ -60,12 +60,22 @@ O app também possui um sistema de login com CPF e senha.
 ## Estrutura do projeto
 
 ```text
-nomepasta/
-  nomepasta/
-    nomearquivo.kt
-    nomepasta/
-      nomearquivo.kt
-    nomearquivo.xml
+app/
+	src/
+		main/
+			java/com/example/calculadoracomloginapp/
+				MainActivity.kt
+				DialogoErro.kt
+			res/
+				drawable/
+				layout/
+					activity_main.xml
+					dialogo_erro.xml
+				mipmap/
+				values/
+			AndroidManifest.xml
+.gitignore
+README.md
 ```
 
 ## Observações
