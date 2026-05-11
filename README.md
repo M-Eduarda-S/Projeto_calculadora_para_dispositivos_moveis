@@ -13,22 +13,47 @@ Programação para Dispositivos Móveis
 ---
 ## Descrição do Projeto
 
-Projeto da construção de uma Calculadora com soma, subtração, divisão e multiplicação e uma tela de login.
+Aplicativo Android que simula uma calculadora básica com operações de:
+- Soma
+- Subtração
+- Multiplicação
+- Divisão
+
+O app também possui um sistema de login com CPF e senha.
 </br> </br>
 
-### Tecnologias
+### Funcionalidades
+- Tela de Login com validação
+- Exibição de diálogo de erro para credenciais inválidas
+- Tela de calculadora com operações básicas
+- Botões habilitados/desabilitados conforme entrada
+- Compartilhamento de resultado via Intent implícita
+</br>
+
+## Tecnologias utilizadas
 - Android Studio
-- Linguagem Kotlin
-- Linguagem de marcação XML
+- Linguagem de programação Kotlin
+- Linguagem de marcação XML (layouts)
+- ConstraintLayout
+
 </br>
 
 ### Requisitos para rodar o projeto
 - Ter o Android Studio instalado
 </br>
 
-### Como navegar no projeto
+### Como rodar o projeto
+1. Clone o repositório
+2. Abra no Android Studio
+3. Execute em um emulador ou dispositivo físico
+</br>
 
-1. Na tela de login...
+## Fluxo do Aplicativo
+1. Usuário insere CPF e senha
+2. Se válido → vai para calculadora
+3. Se inválido → exibe diálogo de erro
+4. Realiza cálculo
+5. Pode compartilhar o resultado
 </br> </br> 
 
 ---
@@ -42,3 +67,7 @@ nomepasta/
       nomearquivo.kt
     nomearquivo.xml
 ```
+
+## Observações
+
+- O CPF e senha são validados localmente (simulação)
