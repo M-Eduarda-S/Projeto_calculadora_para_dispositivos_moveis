@@ -7,7 +7,7 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 
-class DialogErro(context: Context, private val mensagem: String) : Dialog(context) {
+class DialogoErro(context: Context, private val mensagem: String) : Dialog(context) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +33,7 @@ class DialogErro(context: Context, private val mensagem: String) : Dialog(contex
                 2 -> context.getString(R.string.erro_senha_invalida)
                 else -> context.getString(R.string.erro_cpf_senha_invalidos)
             }
-            DialogErro(context, mensagem).show()
+            DialogoErro(context, mensagem).show()
         }
     }
 }
