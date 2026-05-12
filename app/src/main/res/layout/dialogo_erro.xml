@@ -8,14 +8,14 @@
     android:layout_gravity="center"
     android:clipToPadding="false">
 
-    <!-- Botão fechar (X) -->
+    <!-- Botão para fechar -->
     <ImageButton
         android:id="@+id/btnFecharX"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:background="@drawable/bg_fechar_botao"
         android:src="@drawable/ic_fechar_dialogo"
-        android:contentDescription="@string/fechar"
+        android:contentDescription="@string/fechar_dialogo"
         android:scaleType="centerInside"
         android:padding="8dp"
         app:tint="@android:color/white"
@@ -30,7 +30,7 @@
         android:layout_width="140dp"
         android:layout_height="180dp"
         android:src="@drawable/imagem_gato_cadeira"
-        android:contentDescription="@string/gato_desc"
+        android:contentDescription="@string/gato_descricao"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
@@ -44,7 +44,7 @@
         android:layout_marginTop="28dp"
         android:gravity="center"
         android:text="@string/falha_login"
-        android:textColor="#000000"
+        android:textColor="@color/black"
         android:textSize="21sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,21 +59,21 @@
         android:layout_marginTop="6dp"
         android:gravity="center"
         android:text="@string/erro_cpf_senha_invalidos"
-        android:textColor="#000000"
+        android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="@id/tvErroTitulo"
         app:layout_constraintStart_toStartOf="@id/tvErroTitulo"
         app:layout_constraintTop_toBottomOf="@id/tvErroTitulo" />
 
-    <!-- Botão Tentar Novamente -->
+    <!-- Outro botão para sair -->
     <Button
         android:id="@+id/btnFechar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@drawable/bg_botao_tentar"
-        app:backgroundTint="#b61629"
+        app:backgroundTint="@color/bg_botao_vermelho"
         android:text="@string/tentar_novamente"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
