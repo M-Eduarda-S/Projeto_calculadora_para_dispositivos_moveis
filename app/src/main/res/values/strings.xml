@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">CalculadoraComLoginApp</string>
+    <string name="fechar">Fechar</string>
+    <string name="falha_login">Falha ao fazer o login</string>
+    <string name="tentar_novamente">Tentar novamente</string>
+    <string name="gato_desc">Gato com fone na cadeira</string>
+    <string name="erro_cpf_invalido">CPF está inválido!</string>
+    <string name="erro_senha_invalida">A senha está inválida!</string>
+    <string name="erro_cpf_senha_invalidos">CPF ou senha estão inválidos!</string>
 </resources>
