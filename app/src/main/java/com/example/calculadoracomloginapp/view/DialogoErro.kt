@@ -1,4 +1,4 @@
-package com.example.calculadoracomloginapp
+package com.example.calculadoracomloginapp.view
 
 import android.app.Dialog
 import android.content.Context
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
+import com.example.calculadoracomloginapp.R
 
 class DialogoErro(context: Context, private val mensagem: String) : Dialog(context) {
 
