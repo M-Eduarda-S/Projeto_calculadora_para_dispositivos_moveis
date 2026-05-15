@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#FFFFFF</color>
+
+    <!-- activity_login.xml -->
+    <color name="bg_dark">#231f20</color>
+    <color name="meow_green">#74db23</color>
+    <color name="meow_error">#ff4343</color>
+    <color name="meow_warning">#f0ff43</color>
+    <color name="edit_text_bg">#1E1E1E</color>
+    <color name="text_hint">#80FFFFFF</color>
+
+    <!-- dialogo_erro.xml -->
     <color name="bg_botao_vermelho">#b61629</color>
     <color name="bg_dialogo_cinza">#D3D3D3</color>
 </resources>

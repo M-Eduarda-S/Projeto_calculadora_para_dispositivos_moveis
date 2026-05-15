@@ -3,10 +3,10 @@ package com.example.calculadoracomloginapp.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.calculadoracomloginapp.model.Calculadora
+import com.example.calculadoracomloginapp.model.CalculadoraModel
 
 class CalculadoraViewModel(): ViewModel() {
-    private val calculadora = Calculadora()
+    private val calculadoraModel = CalculadoraModel()
 
     private val _mostrarResultado = MutableLiveData<String>() //Backing property - Apenas o VM pode acessa-lo
     val mostrarResultado: LiveData<String> get() = _mostrarResultado // Apenas leitura - É mostrado ao MainActivity
@@ -29,25 +29,25 @@ class CalculadoraViewModel(): ViewModel() {
     }
 
     fun realizarSoma(a:Double, b: Double){
-        val resultado = calculadora.somar(a,b)
+        val resultado = calculadoraModel.somar(a,b)
         _mostrarResultado.value = resultado.toString()
         _operadorUtilizado.value = "+"
     }
 
     fun realizarSubtracao(a: Double, b: Double){
-        val resultado = calculadora.subtrair(a,b)
+        val resultado = calculadoraModel.subtrair(a,b)
         _mostrarResultado.value = resultado.toString()
         _operadorUtilizado.value = "-"
     }
 
     fun realizarMultiplicacao(a: Double, b: Double){
-        val resultado = calculadora.multiplicar(a,b)
+        val resultado = calculadoraModel.multiplicar(a,b)
         _mostrarResultado.value = resultado.toString()
         _operadorUtilizado.value = "*"
     }
 
     fun realizarDivisao(a: Double, b: Double){
-        val resultado = calculadora.dividir(a,b)
+        val resultado = calculadoraModel.dividir(a,b)
         _mostrarResultado.value = resultado.toString()
         _operadorUtilizado.value = "/"
     }

@@ -1,5 +1,18 @@
 <resources>
-    <string name="app_name">CalculadoraComLoginApp</string>
+    <!-- activity_login.xml -->
+    <string name="app_name">Meowladora</string>
+    <string name="brand_name">Meow\nladora</string>
+    <string name="welcome_title">Seja bem vindo!</string>
+    <string name="cpf_hint">Digite seu CPF</string>
+    <string name="senha_hint">Digite sua senha</string>
+    <string name="btn_enviar">Enviar</string>
+    <string name="error_invalid_credentials">CPF ou Senha incorretos.</string>
+    <string name="error_empty_fields">Preencha todos os campos.</string>
+    <string name="login_approved">Login Aprovado!</string>
+    <string name="desc_logo">Logo Meowladora</string>
+    <string name="desc_footer_cat">Imagem de fundo decorativa</string>
+
+    <!-- dialogo_erro.xml -->
     <string name="fechar_dialogo">Fechar</string>
     <string name="falha_login">Falha ao fazer o login</string>
     <string name="tentar_novamente">Tentar novamente</string>

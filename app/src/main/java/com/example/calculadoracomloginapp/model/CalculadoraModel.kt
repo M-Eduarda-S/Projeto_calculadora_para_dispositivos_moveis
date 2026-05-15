@@ -1,6 +1,6 @@
 package com.example.calculadoracomloginapp.model
 
-class Calculadora {
+class CalculadoraModel {
     fun somar(a: Double, b: Double): Double {
         return a + b
     }

@@ -1,124 +1,82 @@
 package com.example.calculadoracomloginapp.view
 
-import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.calculadoracomloginapp.R
+import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
-import com.example.calculadoracomloginapp.viewmodel.CalculadoraViewModel
-import kotlin.apply
+import com.example.calculadoracomloginapp.R
+import android.content.Intent
 
 class MainActivity : AppCompatActivity() {
 
-    private val viewModel: CalculadoraViewModel by viewModels()
-    private lateinit var editTextValorA: EditText
-    private lateinit var editTextValorB: EditText
+    // Para ir a calculdadora
+    private fun goToCalculator() {
+        val intent = Intent(this, Calculadora::class.java)
+        startActivity(intent)
+        finish()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        setContentView(R.layout.activity_login)
+
+        // Inicializando os componentes
+        val etCpf = findViewById<EditText>(R.id.etCpf)
+        val etSenha = findViewById<EditText>(R.id.etSenha)
+        val btnEnviar = findViewById<Button>(R.id.btnEnviar)
+        val tvStatusMessage = findViewById<TextView>(R.id.tvStatusMessage)
+        
+        // O botão de enviar começa desabilitado
+        btnEnviar.isEnabled = false
+
+        // Credenciais padrão
+        val defaultCpf = "12345678910"
+        val defaultSenha = "123"
+
+        // Função para validar se os campos estão preenchidos e habilitar o botão
+        val watcher = {
+            val cpf = etCpf.text.toString().trim()
+            val senha = etSenha.text.toString().trim()
+            btnEnviar.isEnabled = cpf.isNotEmpty() && senha.isNotEmpty()
         }
 
-        editTextValorA = findViewById<EditText>(R.id.edit_text_valor_a)
-        editTextValorB = findViewById<EditText>(R.id.edit_text_valor_b)
+        // Adiciona listeners para monitorar a digitação e habilitar o botão
+        etCpf.addTextChangedListener { watcher() }
+        etSenha.addTextChangedListener { watcher() }
 
-        val btnSomar =  findViewById<Button>(R.id.btn_somar)
-        val btnSubtrair =  findViewById<Button>(R.id.btn_subtrair)
-        val btnDividir =  findViewById<Button>(R.id.btn_dividir)
-        val btnMultiplicar = findViewById<Button>(R.id.btn_multiplicar)
+        btnEnviar.setOnClickListener {
+            val cpfInput = etCpf.text.toString().trim()
+            val senhaInput = etSenha.text.toString().trim()
 
-        val tvResultado = findViewById<TextView>(R.id.tv_resultado)
+            // remove máscara do CPF
+            val cpfLimpo = cpfInput.replace(Regex("[^\\d]"), "")
 
-        val btnCompartilhar = findViewById<Button>(R.id.btn_compartilhar)
+            // Lógica de validação do login
+            if (cpfLimpo == defaultCpf && senhaInput == defaultSenha) {
+                // Login Aprovado
+                tvStatusMessage.text = getString(R.string.login_approved)
+                tvStatusMessage.setTextColor(ContextCompat.getColor(this, R.color.meow_green))
 
-        viewModel.botoesHabilitados.observe(this){ habilitado ->
-            btnSomar.isEnabled = habilitado
-            btnSubtrair.isEnabled = habilitado
-            btnDividir.isEnabled = habilitado
-            btnMultiplicar.isEnabled = habilitado
-        }
+                // Vai para a tela da Calculadora
+                goToCalculator()
+            } else {
+                // Determina qual erro mostrar no diálogo
+                val tipoErro = when {
+                    cpfLimpo  != defaultCpf && senhaInput != defaultSenha -> 0 // ambos errados
+                    cpfLimpo  != defaultCpf -> 1 // CPF errado
+                    else -> 2 // senha errada
+                }
+                
+                // Abre o diálogo de erro customizado
+                DialogoErro.show(this, tipoErro)
 
-        viewModel.mostrarResultado.observe(this) { resultado ->
-            tvResultado.text = resultado
-        }
-
-        val textWatcher = object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-
-            override fun afterTextChanged(s: Editable?) {
-               viewModel.validarCampos(editTextValorA.text.toString(),editTextValorB.text.toString())
+                // Atualiza a mensagem na tela de login também
+                tvStatusMessage.text = getString(R.string.error_invalid_credentials)
+                tvStatusMessage.setTextColor(ContextCompat.getColor(this, R.color.meow_error))
             }
         }
-
-        editTextValorA.addTextChangedListener(textWatcher)
-        editTextValorB.addTextChangedListener(textWatcher)
-
-
-        btnSomar.setOnClickListener {
-            val inputValorA = editTextValorA.text.toString().toDoubleOrNull()
-            val inputValorB = editTextValorB.text.toString().toDoubleOrNull()
-
-            if (inputValorA != null && inputValorB != null) {
-                viewModel.realizarSoma(inputValorA, inputValorB)
-            }
-        }
-
-        btnSubtrair.setOnClickListener {
-            val inputValorA = editTextValorA.text.toString().toDoubleOrNull()
-            val inputValorB = editTextValorB.text.toString().toDoubleOrNull()
-
-            if (inputValorA != null && inputValorB != null) {
-                viewModel.realizarSubtracao(inputValorA, inputValorB)
-            }
-        }
-
-        btnDividir.setOnClickListener {
-            val inputValorA = editTextValorA.text.toString().toDoubleOrNull()
-            val inputValorB = editTextValorB.text.toString().toDoubleOrNull()
-
-            if (inputValorA != null && inputValorB != null) {
-                viewModel.realizarDivisao(inputValorA, inputValorB)
-            }
-        }
-
-        btnMultiplicar.setOnClickListener {
-            val inputValorA = editTextValorA.text.toString().toDoubleOrNull()
-            val inputValorB = editTextValorB.text.toString().toDoubleOrNull()
-
-            if (inputValorA != null && inputValorB != null) {
-                viewModel.realizarMultiplicacao(inputValorA,inputValorB)
-            }
-        }
-
-        btnCompartilhar.setOnClickListener {
-            val textValorA = editTextValorA.text.toString()
-            val textValorB = editTextValorB.text.toString()
-            val operador = viewModel.operadorUtilizado
-            val resultado = viewModel.mostrarResultado.value
-
-            val intent = Intent().apply{
-                action = Intent.ACTION_SEND
-                putExtra(Intent.EXTRA_TEXT, "Oi! Você sabia que $textValorA $operador $textValorB = $resultado?")
-                type = "text/plain"
-            }
-            val compartilharIntent = Intent.createChooser(intent, "Compartilhar resultado:")
-            startActivity(compartilharIntent)
-        }
-
     }
 }
