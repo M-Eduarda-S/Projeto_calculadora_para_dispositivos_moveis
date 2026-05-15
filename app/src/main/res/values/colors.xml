@@ -11,6 +11,9 @@
     <color name="edit_text_bg">#1E1E1E</color>
     <color name="text_hint">#80FFFFFF</color>
 
+    <!-- activity_calculadora.xml -->
+    <color name="bg_resultado">#322c2e</color>
+
     <!-- dialogo_erro.xml -->
     <color name="bg_botao_vermelho">#b61629</color>
     <color name="bg_dialogo_cinza">#D3D3D3</color>
