@@ -20,4 +20,17 @@
     <string name="erro_cpf_invalido">CPF está inválido!</string>
     <string name="erro_senha_invalida">A senha está inválida!</string>
     <string name="erro_cpf_senha_invalidos">CPF ou senha estão inválidos!</string>
+
+    <!-- activity_calculadora.xml -->
+    <string name="title_calculadora">Vamos calcular!</string>
+    <string name="hint_resultado">Seu resultado aparecerá aqui!</string>
+    <string name="hint_primeiro_valor">Primeiro valor</string>
+    <string name="hint_segundo_valor">Segundo valor</string>
+    <string name="label_compartilhar">Compartilhe aqui!</string>
+    <string name="desc_compartilhar">Botão para compartilhar o resultado</string>
+    <string name="op_soma">+</string>
+    <string name="op_subtracao">-</string>
+    <string name="op_divisao">÷</string>
+    <string name="op_multiplicacao">x</string>
+    <string name="op_limpar">C</string>
 </resources>
