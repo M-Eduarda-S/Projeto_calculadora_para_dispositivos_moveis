@@ -5,7 +5,7 @@ Programação para Dispositivos Móveis
 
 ### Acadêmicos
 - Beatriz Pimentel Bagesteiro Alves
-- Juliana Simon
+- Juliana Bertolazi Simon
 - Maria Eduarda Santos
 - Nicolas Vera
 - Yasmin Tarnovski Faccin
