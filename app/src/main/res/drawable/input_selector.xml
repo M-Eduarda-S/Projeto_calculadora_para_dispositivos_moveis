@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Quando o campo está selecionado (focado) -->
+    <item android:state_focused="true" android:drawable="@drawable/input_border_focused" />
+    <!-- Estado padrão (não focado) -->
+    <item android:drawable="@drawable/input_border_default" />
+</selector>
