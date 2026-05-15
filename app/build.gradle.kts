@@ -46,6 +46,8 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.0")
     implementation("androidx.activity:activity-ktx:1.9.0")
 
+    implementation("androidx.core:core-ktx:1.12.0")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
