@@ -9,7 +9,6 @@ Programação para Dispositivos Móveis
 - Maria Eduarda Santos
 - Nicolas Vera
 - Yasmin Tarnovski Faccin
-<br />
 
 
 ---
@@ -22,7 +21,8 @@ Aplicativo Android que simula uma calculadora básica com operações de:
 - Divisão
 
 O app também possui um sistema de login com CPF e senha.
-<br />
+<br /> <br /> 
+
 
 ### Funcionalidades
 - Tela de Login com validação
@@ -66,7 +66,7 @@ O aplicativo possui um sistema de autenticação simples para fins de simulaçã
 - CPF e senha são comparados com valores fixos definidos no código: CPF: 12345678910 e a Senha: 123
 
 Se as credenciais estiverem corretas, o usuário é direcionado para a tela da calculadora. Caso contrário, é exibido um diálogo informando o tipo de erro (CPF incorreto, senha incorreta ou ambos).
-<br />
+<br /> <br />
 
 ---
 ## Arquitetura
@@ -88,7 +88,7 @@ app/
 	src/
 		main/
 			java/com/example/calculadoracomloginapp/
-		    model/
+		    	model/
                     Calculadora.kt
                 view/
                     MainActivity.kt
