@@ -29,8 +29,9 @@ class MainActivity : AppCompatActivity() {
         val btnEnviar = findViewById<Button>(R.id.btnEnviar)
         val tvStatusMessage = findViewById<TextView>(R.id.tvStatusMessage)
         
-        // O botão de enviar começa desabilitado
+        // O botão de enviar começa desabilitado e mais claro
         btnEnviar.isEnabled = false
+        btnEnviar.alpha = 0.5f
 
         // Credenciais padrão
         val defaultCpf = "12345678910"
@@ -40,7 +41,10 @@ class MainActivity : AppCompatActivity() {
         val watcher = {
             val cpf = etCpf.text.toString().trim()
             val senha = etSenha.text.toString().trim()
-            btnEnviar.isEnabled = cpf.isNotEmpty() && senha.isNotEmpty()
+            val isEnabled = cpf.isNotEmpty() && senha.isNotEmpty()
+            
+            btnEnviar.isEnabled = isEnabled
+            btnEnviar.alpha = if (isEnabled) 1.0f else 0.5f
         }
 
         // Adiciona listeners para monitorar a digitação e habilitar o botão
