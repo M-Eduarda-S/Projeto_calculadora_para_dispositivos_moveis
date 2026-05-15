@@ -35,7 +35,13 @@ class Calculadora : AppCompatActivity() {
         editTextValorA = findViewById<EditText>(R.id.edit_text_valor_a)
         editTextValorB = findViewById<EditText>(R.id.edit_text_valor_b)
 
-        val btnSomar =  findViewById<Button>(R.id.btn_somar)
+        val btnval btnLimpar = findViewById<Button>(R.id.btn_limpar)
+
+        btnLimpar.setOnClickListener {
+            editTextValorA.text.clear()
+            editTextValorB.text.clear()
+            viewModel.limpar()
+        }Somar =  findViewById<Button>(R.id.btn_somar)
         val btnSubtrair =  findViewById<Button>(R.id.btn_subtrair)
         val btnDividir =  findViewById<Button>(R.id.btn_dividir)
         val btnMultiplicar = findViewById<Button>(R.id.btn_multiplicar)
@@ -53,6 +59,14 @@ class Calculadora : AppCompatActivity() {
 
         viewModel.mostrarResultado.observe(this) { resultado ->
             tvResultado.text = resultado
+        }
+
+        // In Calculadora.kt inside onCreate
+        val btnLimpar = findViewById<Button>(R.id.btn_limpar)
+
+        btnLimpar.setOnClickListener {
+            editTextValorA.text.clear()
+            editTextValorB.text.clear()
         }
 
         val textWatcher = object : TextWatcher {
@@ -107,7 +121,7 @@ class Calculadora : AppCompatActivity() {
         btnCompartilhar.setOnClickListener {
             val textValorA = editTextValorA.text.toString()
             val textValorB = editTextValorB.text.toString()
-            val operador = viewModel.operadorUtilizado
+            val operador = viewModel.operadorUtilizado.value ?: "" //se não é nada
             val resultado = viewModel.mostrarResultado.value
 
             val intent = Intent().apply{

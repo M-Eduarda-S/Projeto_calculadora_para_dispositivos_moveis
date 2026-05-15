@@ -12,7 +12,7 @@ import android.content.Intent
 
 class MainActivity : AppCompatActivity() {
 
-    // Para ir a calculdadora
+    // Para ir à calculadora
     private fun goToCalculator() {
         val intent = Intent(this, Calculadora::class.java)
         startActivity(intent)

@@ -47,8 +47,19 @@ class CalculadoraViewModel(): ViewModel() {
     }
 
     fun realizarDivisao(a: Double, b: Double){
-        val resultado = calculadoraModel.dividir(a,b)
-        _mostrarResultado.value = resultado.toString()
-        _operadorUtilizado.value = "/"
+        if (b == 0.0) {
+            _mostrarResultado.value = "Erro: Divisão por zero"
+            _operadorUtilizado.value = "÷"
+        } else {
+            val resultado = calculadoraModel.dividir(a, b)
+            _mostrarResultado.value = resultado.toString()
+            _operadorUtilizado.value = "÷"
+        }
+    }
+
+    // pra implementar a lógica de limpeza e o botãozinho que limpa
+    fun limpar() {
+        _mostrarResultado.value = "0"
+        _operadorUtilizado.value = ""
     }
 }
