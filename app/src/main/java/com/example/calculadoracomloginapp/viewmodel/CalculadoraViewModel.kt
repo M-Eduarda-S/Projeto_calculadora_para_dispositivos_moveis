@@ -8,8 +8,8 @@ import com.example.calculadoracomloginapp.model.CalculadoraModel
 class CalculadoraViewModel(): ViewModel() {
     private val calculadoraModel = CalculadoraModel()
 
-    private val _mostrarResultado = MutableLiveData<String>() //Backing property - Apenas o VM pode acessa-lo
-    val mostrarResultado: LiveData<String> get() = _mostrarResultado // Apenas leitura - É mostrado ao MainActivity
+    private val _mostrarResultado = MutableLiveData<String>()
+    val mostrarResultado: LiveData<String> get() = _mostrarResultado
 
     private val _botoesHabilitados = MutableLiveData<Boolean>()
     val botoesHabilitados: LiveData<Boolean> get() = _botoesHabilitados
@@ -28,22 +28,27 @@ class CalculadoraViewModel(): ViewModel() {
         _botoesHabilitados.value = camposPreenchidos
     }
 
+    fun limpar() {
+        _mostrarResultado.value = "0"
+        _operadorUtilizado.value = ""
+    }
+
     fun realizarSoma(a:Double, b: Double){
         val resultado = calculadoraModel.somar(a,b)
-        _mostrarResultado.value = resultado.toString()
+        _mostrarResultado.value = formatarResultado(resultado)
         _operadorUtilizado.value = "+"
     }
 
     fun realizarSubtracao(a: Double, b: Double){
         val resultado = calculadoraModel.subtrair(a,b)
-        _mostrarResultado.value = resultado.toString()
+        _mostrarResultado.value = formatarResultado(resultado)
         _operadorUtilizado.value = "-"
     }
 
     fun realizarMultiplicacao(a: Double, b: Double){
         val resultado = calculadoraModel.multiplicar(a,b)
-        _mostrarResultado.value = resultado.toString()
-        _operadorUtilizado.value = "*"
+        _mostrarResultado.value = formatarResultado(resultado)
+        _operadorUtilizado.value = "x"
     }
 
     fun realizarDivisao(a: Double, b: Double){
@@ -52,14 +57,16 @@ class CalculadoraViewModel(): ViewModel() {
             _operadorUtilizado.value = "÷"
         } else {
             val resultado = calculadoraModel.dividir(a, b)
-            _mostrarResultado.value = resultado.toString()
+            _mostrarResultado.value = formatarResultado(resultado)
             _operadorUtilizado.value = "÷"
         }
     }
 
-    // pra implementar a lógica de limpeza e o botãozinho que limpa
-    fun limpar() {
-        _mostrarResultado.value = "0"
-        _operadorUtilizado.value = ""
+    private fun formatarResultado(resultado: Double): String {
+        return if (resultado % 1 == 0.0) {
+            resultado.toInt().toString()
+        } else {
+            resultado.toString()
+        }
     }
 }
